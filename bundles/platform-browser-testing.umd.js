@@ -1,6 +1,6 @@
 /**
- * @license Angular v5.1.0-beta.0-21bfaf226
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v7.0.0-beta.4-a2418a9037
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 (function (global, factory) {
@@ -10,13 +10,13 @@
 }(this, (function (exports,_angular_core,_angular_platformBrowser) { 'use strict';
 
 /**
- * @license Angular v5.1.0-beta.0-21bfaf226
- * (c) 2010-2017 Google, Inc. https://angular.io/
+ * @license Angular v7.0.0-beta.4-a2418a9037
+ * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @license
@@ -25,8 +25,9 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+/** @type {?} */
 var browserDetection;
-var BrowserDetection = (function () {
+var BrowserDetection = /** @class */ (function () {
     function BrowserDetection(ua) {
         this._overrideUa = ua;
     }
@@ -154,6 +155,48 @@ var BrowserDetection = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(BrowserDetection.prototype, "supportsCustomElements", {
+        get: /**
+         * @return {?}
+         */
+        function () { return (typeof (/** @type {?} */ (_angular_core.ɵglobal)).customElements !== 'undefined'); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BrowserDetection.prototype, "supportsDeprecatedCustomCustomElementsV0", {
+        get: /**
+         * @return {?}
+         */
+        function () {
+            return (typeof (/** @type {?} */ (document)).registerElement !== 'undefined');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BrowserDetection.prototype, "supportsShadowDom", {
+        get: /**
+         * @return {?}
+         */
+        function () {
+            /** @type {?} */
+            var testEl = document.createElement('div');
+            return (typeof testEl.attachShadow !== 'undefined');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BrowserDetection.prototype, "supportsDeprecatedShadowDomV0", {
+        get: /**
+         * @return {?}
+         */
+        function () {
+            /** @type {?} */
+            var testEl = /** @type {?} */ (document.createElement('div'));
+            return (typeof testEl.createShadowRoot !== 'undefined');
+        },
+        enumerable: true,
+        configurable: true
+    });
     return BrowserDetection;
 }());
 BrowserDetection.setup();
@@ -187,14 +230,7 @@ function createNgZone() {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
  */
 /**
  * @return {?}
@@ -203,20 +239,21 @@ function initBrowserTests() {
     _angular_platformBrowser.ɵBrowserDomAdapter.makeCurrent();
     BrowserDetection.setup();
 }
+/** @type {?} */
 var _TEST_BROWSER_PLATFORM_PROVIDERS = [{ provide: _angular_core.PLATFORM_INITIALIZER, useValue: initBrowserTests, multi: true }];
-/**
+/** *
  * Platform for testing
  *
- * \@stable
- */
+ *
+  @type {?} */
 var platformBrowserTesting = _angular_core.createPlatformFactory(_angular_core.platformCore, 'browserTesting', _TEST_BROWSER_PLATFORM_PROVIDERS);
 var ɵ0 = createNgZone;
 /**
  * NgModule for testing.
  *
- * \@stable
+ *
  */
-var BrowserTestingModule = (function () {
+var BrowserTestingModule = /** @class */ (function () {
     function BrowserTestingModule() {
     }
     BrowserTestingModule.decorators = [
@@ -229,8 +266,6 @@ var BrowserTestingModule = (function () {
                     ]
                 },] },
     ];
-    /** @nocollapse */
-    BrowserTestingModule.ctorParameters = function () { return []; };
     return BrowserTestingModule;
 }());
 
