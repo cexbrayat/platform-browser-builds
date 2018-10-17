@@ -94,7 +94,11 @@ export var BROWSER_MODULE_PROVIDERS = [
     ELEMENT_PROBE_PROVIDERS,
 ];
 /**
- * The ng module for the browser.
+ * Exports required infrastructure for all Angular apps.
+ * Included by defaults in all Angular apps created with the CLI
+ * `new` command.
+ * Re-exports `CommonModule` and `ApplicationModule`, making their
+ * exports and providers available to all apps.
  *
  *
  */
@@ -105,29 +109,34 @@ var BrowserModule = /** @class */ (function () {
         }
     }
     /**
-     * Configures a browser-based application to transition from a server-rendered app, if
-     * one is present on the page. The specified parameters must include an application id,
-     * which must match between the client and server applications.
+     * Configures a browser-based app to transition from a server-rendered app, if
+     * one is present on the page.
+     *
+     * @param params An object containing an identifier for the app to transition.
+     * The ID must match between the client and server versions of the app.
+     * @returns The reconfigured `BrowserModule` to import into the app's root `AppModule`.
      *
      * @experimental
      */
     /**
-     * Configures a browser-based application to transition from a server-rendered app, if
-     * one is present on the page. The specified parameters must include an application id,
-     * which must match between the client and server applications.
+     * Configures a browser-based app to transition from a server-rendered app, if
+     * one is present on the page.
      *
      * \@experimental
-     * @param {?} params
-     * @return {?}
+     * @param {?} params An object containing an identifier for the app to transition.
+     * The ID must match between the client and server versions of the app.
+     * @return {?} The reconfigured `BrowserModule` to import into the app's root `AppModule`.
+     *
      */
     BrowserModule.withServerTransition = /**
-     * Configures a browser-based application to transition from a server-rendered app, if
-     * one is present on the page. The specified parameters must include an application id,
-     * which must match between the client and server applications.
+     * Configures a browser-based app to transition from a server-rendered app, if
+     * one is present on the page.
      *
      * \@experimental
-     * @param {?} params
-     * @return {?}
+     * @param {?} params An object containing an identifier for the app to transition.
+     * The ID must match between the client and server versions of the app.
+     * @return {?} The reconfigured `BrowserModule` to import into the app's root `AppModule`.
+     *
      */
     function (params) {
         return {

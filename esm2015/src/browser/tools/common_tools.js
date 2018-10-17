@@ -76,11 +76,7 @@ export class AngularProfiler {
         /** @type {?} */
         const end = getDOM().performanceNow();
         if (record && isProfilerAvailable) {
-            // need to cast to <any> because type checker thinks there's no argument
-            // while in fact there is:
-            //
-            // https://developer.mozilla.org/en-US/docs/Web/API/Console/profileEnd
-            (/** @type {?} */ (window.console.profileEnd))(profileName);
+            window.console.profileEnd(profileName);
         }
         /** @type {?} */
         const msPerTick = (end - start) / numTicks;

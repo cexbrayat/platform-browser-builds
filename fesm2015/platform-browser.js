@@ -1,5 +1,5 @@
 /**
- * @license Angular v7.0.0-beta.4-a2418a9037
+ * @license Angular v7.0.0-rc.1-1c561a833c
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -2590,7 +2590,13 @@ class HammerGesturesPlugin extends EventManagerPlugin {
                 zone.runGuarded(function () { handler(eventObj); });
             };
             mc.on(eventName, callback);
-            return () => mc.off(eventName, callback);
+            return () => {
+                mc.off(eventName, callback);
+                // destroy mc to prevent memory leak
+                if (typeof mc.destroy === 'function') {
+                    mc.destroy();
+                }
+            };
         });
     }
     /**
@@ -3086,7 +3092,11 @@ const BROWSER_MODULE_PROVIDERS = [
     ELEMENT_PROBE_PROVIDERS,
 ];
 /**
- * The ng module for the browser.
+ * Exports required infrastructure for all Angular apps.
+ * Included by defaults in all Angular apps created with the CLI
+ * `new` command.
+ * Re-exports `CommonModule` and `ApplicationModule`, making their
+ * exports and providers available to all apps.
  *
  *
  */
@@ -3100,13 +3110,14 @@ class BrowserModule {
         }
     }
     /**
-     * Configures a browser-based application to transition from a server-rendered app, if
-     * one is present on the page. The specified parameters must include an application id,
-     * which must match between the client and server applications.
+     * Configures a browser-based app to transition from a server-rendered app, if
+     * one is present on the page.
      *
      * \@experimental
-     * @param {?} params
-     * @return {?}
+     * @param {?} params An object containing an identifier for the app to transition.
+     * The ID must match between the client and server versions of the app.
+     * @return {?} The reconfigured `BrowserModule` to import into the app's root `AppModule`.
+     *
      */
     static withServerTransition(params) {
         return {
@@ -3433,11 +3444,7 @@ class AngularProfiler {
         /** @type {?} */
         const end = getDOM().performanceNow();
         if (record && isProfilerAvailable) {
-            // need to cast to <any> because type checker thinks there's no argument
-            // while in fact there is:
-            //
-            // https://developer.mozilla.org/en-US/docs/Web/API/Console/profileEnd
-            (/** @type {?} */ (win.console.profileEnd))(profileName);
+            win.console.profileEnd(profileName);
         }
         /** @type {?} */
         const msPerTick = (end - start) / numTicks;
@@ -3698,7 +3705,8 @@ class By {
     /**
      * Match all elements.
      *
-     * ## Example
+     * \@usageNotes
+     * ### Example
      *
      * {\@example platform-browser/dom/debug/ts/by/by.ts region='by_all'}
      * @return {?}
@@ -3707,7 +3715,8 @@ class By {
     /**
      * Match elements by the given CSS selector.
      *
-     * ## Example
+     * \@usageNotes
+     * ### Example
      *
      * {\@example platform-browser/dom/debug/ts/by/by.ts region='by_css'}
      * @param {?} selector
@@ -3723,7 +3732,8 @@ class By {
     /**
      * Match elements that have the given directive present.
      *
-     * ## Example
+     * \@usageNotes
+     * ### Example
      *
      * {\@example platform-browser/dom/debug/ts/by/by.ts region='by_directive'}
      * @param {?} type
@@ -3758,7 +3768,7 @@ class By {
  * found in the LICENSE file at https://angular.io/license
  */
 /** @type {?} */
-const VERSION = new Version('7.0.0-beta.4-a2418a9037');
+const VERSION = new Version('7.0.0-rc.1-1c561a833c');
 
 /**
  * @fileoverview added by tsickle

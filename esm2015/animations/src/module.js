@@ -6,7 +6,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BROWSER_ANIMATIONS_PROVIDERS, BROWSER_NOOP_ANIMATIONS_PROVIDERS } from './providers';
 /**
- * \@experimental Animation support is experimental.
+ * Exports `BrowserModule` with additional [dependency-injection providers](guide/glossary#provider)
+ * for use with animations. See [Animations](guide/animations).
+ * \@experimental
  */
 export class BrowserAnimationsModule {
 }
@@ -17,7 +19,8 @@ BrowserAnimationsModule.decorators = [
             },] },
 ];
 /**
- * \@experimental Animation support is experimental.
+ * A null player that must be imported to allow disabling of animations.
+ * \@experimental
  */
 export class NoopAnimationsModule {
 }

@@ -26,14 +26,16 @@ By = /** @class */ (function () {
     /**
      * Match all elements.
      *
-     * ## Example
+     * @usageNotes
+     * ### Example
      *
      * {@example platform-browser/dom/debug/ts/by/by.ts region='by_all'}
      */
     /**
      * Match all elements.
      *
-     * ## Example
+     * \@usageNotes
+     * ### Example
      *
      * {\@example platform-browser/dom/debug/ts/by/by.ts region='by_all'}
      * @return {?}
@@ -41,7 +43,8 @@ By = /** @class */ (function () {
     By.all = /**
      * Match all elements.
      *
-     * ## Example
+     * \@usageNotes
+     * ### Example
      *
      * {\@example platform-browser/dom/debug/ts/by/by.ts region='by_all'}
      * @return {?}
@@ -50,14 +53,16 @@ By = /** @class */ (function () {
     /**
      * Match elements by the given CSS selector.
      *
-     * ## Example
+     * @usageNotes
+     * ### Example
      *
      * {@example platform-browser/dom/debug/ts/by/by.ts region='by_css'}
      */
     /**
      * Match elements by the given CSS selector.
      *
-     * ## Example
+     * \@usageNotes
+     * ### Example
      *
      * {\@example platform-browser/dom/debug/ts/by/by.ts region='by_css'}
      * @param {?} selector
@@ -66,7 +71,8 @@ By = /** @class */ (function () {
     By.css = /**
      * Match elements by the given CSS selector.
      *
-     * ## Example
+     * \@usageNotes
+     * ### Example
      *
      * {\@example platform-browser/dom/debug/ts/by/by.ts region='by_css'}
      * @param {?} selector
@@ -82,14 +88,16 @@ By = /** @class */ (function () {
     /**
      * Match elements that have the given directive present.
      *
-     * ## Example
+     * @usageNotes
+     * ### Example
      *
      * {@example platform-browser/dom/debug/ts/by/by.ts region='by_directive'}
      */
     /**
      * Match elements that have the given directive present.
      *
-     * ## Example
+     * \@usageNotes
+     * ### Example
      *
      * {\@example platform-browser/dom/debug/ts/by/by.ts region='by_directive'}
      * @param {?} type
@@ -98,7 +106,8 @@ By = /** @class */ (function () {
     By.directive = /**
      * Match elements that have the given directive present.
      *
-     * ## Example
+     * \@usageNotes
+     * ### Example
      *
      * {\@example platform-browser/dom/debug/ts/by/by.ts region='by_directive'}
      * @param {?} type

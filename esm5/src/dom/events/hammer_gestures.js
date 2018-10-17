@@ -75,6 +75,8 @@ export function HammerInstance() { }
 HammerInstance.prototype.on;
 /** @type {?} */
 HammerInstance.prototype.off;
+/** @type {?|undefined} */
+HammerInstance.prototype.destroy;
 /**
  * An injectable [HammerJS Manager](http://hammerjs.github.io/api/#hammer.manager)
  * for gesture recognition. Configures specific event recognition.
@@ -239,8 +241,6 @@ var HammerGesturesPlugin = /** @class */ (function (_super) {
                 if (!cancelRegistration_1) {
                     // Now that Hammer is loaded and the listener is being loaded for real,
                     // the deregistration function changes from canceling registration to removal.
-                    // Now that Hammer is loaded and the listener is being loaded for real,
-                    // the deregistration function changes from canceling registration to removal.
                     deregister_1 = _this.addEventListener(element, eventName, handler);
                 }
             })
@@ -262,7 +262,13 @@ var HammerGesturesPlugin = /** @class */ (function (_super) {
                 zone.runGuarded(function () { handler(eventObj); });
             };
             mc.on(eventName, callback);
-            return function () { return mc.off(eventName, callback); };
+            return function () {
+                mc.off(eventName, callback);
+                // destroy mc to prevent memory leak
+                if (typeof mc.destroy === 'function') {
+                    mc.destroy();
+                }
+            };
         });
     };
     /**
